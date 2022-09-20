@@ -9,119 +9,119 @@
     <title>Group B-3 Final Project</title>
 </head>
 <body>
-    <h1>TASK LIST</h1>
-    <div>
-        <div>
-            <h5>Add New Task:</h5>
-         <div class="row" id="user-input">
-            <div class="col-8">
-                <div class="mb-3">
-                    <label for="new-task" class="form-label">New Task</label>
-                    <input type="text" class="form-control" id="new-task" aria-describedby="taskName" placeholder="Work">
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="due-date" class="form-label">Due Date</label>
-                    <input type="date" class="form-control" id="due-date" aria-describedby="dueDate" placeholder="9/18/2022">
-                </div>
-            </div>
-         </div>
 
-            <div class="row">
-            <div class="mb-3">
-                <label for="task-description" class="form-label">Task Description</label>
-                <input type="textarea" class="form-control" id="task-description" aria-describedby="taskDescription" style="width: 100%; height: 200px;" placeholder="We're goimg to the movies">
-            </div>
+
+    <!-- FORM AREA -->
+        <div class="px-4">
+            <h1 class="mb-5">TASK LIST</h1>
+            <h5 class="mb-4">Add New Task</h5>
+            <div class="row" id="user-input">
+                <div class="col-8">
+                    <div class="mb-3">
+                        <label for="new-task" class="form-label">Task Name</label>
+                        <input type="text" class="form-control" id="new-task" aria-describedby="taskName" placeholder="Work">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="due-date" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="due-date" aria-describedby="dueDate" placeholder="9/18/2022">
+                    </div>
+                </div>
             </div>
 
             <div class="row">
-            <div class="mb-3">
-                <label for="assign-to" class="form-label">Assigned To</label>
-                <input type="text" class="form-control" id="assign-to" aria-describedby="assignTo" placeholder="John Corbin Mannix Wenbo Zinash">
-                <input type="submit" class="btm btn-primary">
+                <div class="mb-3">
+                    <label for="task-description" class="form-label">Task Description</label>
+                    <input type="textarea" class="form-control" id="task-description" aria-describedby="taskDescription" style="width: 100%; height: 200px;" placeholder="We're goimg to the movies">
+                </div>
             </div>
+
+            <div class="row">
+                 <label for="assign-to" class="form-label">Assigned To</label>
+                <div class="col">
+                    <input type="text" class="form-control" id="assign-to" aria-describedby="assignTo" placeholder="John Corbin Mannix Wenbo Zinash">
+                </div>
+                <div class="col">
+                     <input type="submit" class="btn btn-primary">
+                </div>
             </div>
         </div>
+
+        <!-- TASK CARDS -->
             <section>
-                <h2>
-                    Task:
+                <h2 class="mx-4 mt-5">
+                    Tasks
                 </h2>
+
+                <ul class="container-fluid">
+                
+                    <li class="list-group-item" style="width: 18rem;">
+                        <div class="card bg-light">
+                            <h5 class="card-header">Create Wireframe</h5>
+                            <div class="card-body">
+                                <p class="card-text">The objective of this task is to create the Task planner app wireframes to understand how it will work and look.</p>
+                                <p class="card-text">Mannix</p>
+                                <p class="card-text">Due: 09-18-22</p>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                
+                    <li class="list-group-item" style="width: 18rem;">
+                        <div class="card bg-light">
+                            <h5 class="card-header">Create Git Repo</h5>
+                            <div class="card-body">
+                                <p class="card-text">Create a private GitHub repository that is shared among your groupmates and your instructor (Phillip-Generation).</p>
+                                <p class="card-text">Corbin</p>
+                                <p class="card-text">Due: 09-18-22</p>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li class="list-group-item" style="width: 18rem;">
+                        <div class="card bg-light">
+                            <h5 class="card-header">Create Page Structure</h5>
+                            <div class="card-body">
+                                <p class="card-text">Create a basic HTML structure and include Bootstrap</p>
+                                <p class="card-text">Zinash</p>
+                                <p class="card-text">Due: 09-18-22</p>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li class="list-group-item" style="width: 18rem;">
+                        <div class="card bg-light">
+                            <h5 class="card-header">Implement Wireframe</h5>
+                            <div class="card-body">
+                                <p class="card-text">Go through the different Bootstrap components and select the ones that are more similar to your wireframe</p>
+                                <p class="card-text">Wenbo</p>
+                                <p class="card-text">Due: 09-18-22</p>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li class="list-group-item" style="width: 18rem;">
+                        <div class="card bg-light">
+                            <h5 class="card-header">Implement Card Layout</h5>
+                            <div class="card-body">
+                                <p class="card-text">Create a basic structure of a card with the task's information</p>
+                                <p class="card-text"></p>
+                                <p class="card-text">Due: 09-20-22</p>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+    
+                </ul>
+
             </section>
 
-            <ul class="list-group">
-                <li class="list-group-item"><div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <ul>
-                        <li>Task:</li>
-                        <li> Date:</li>
-                        <li> Description:</li>
-                        <li> Assign-to:</li>
-                      <button type="submit" class="btn btn-primary">Delete</button>
-                    </ul>
-                  </div></li>
-   
-                  <ul class="list-group">
-                    <li class="list-group-item"><div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <ul>
-                            <li>Task:</li>
-                            <li> Date:</li>
-                            <li> Description:</li>
-                            <li> Assign-to:</li>
-                          <button type="submit" class="btn btn-primary">Delete</button>
-                        </ul>
-                      </div></li>  
-                  
-                      <ul class="list-group">
-                        <li class="list-group-item"><div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <ul>
-                                <li>Task:</li>
-                                <li> Date:</li>
-                                <li> Description:</li>
-                                <li> Assign-to:</li>
-                              <button type="submit" class="btn btn-primary">Delete</button>
-                            </ul>
-                          </div></li>
 
-                          <ul class="list-group">
-                            <li class="list-group-item"><div class="card" style="width: 18rem;">
-                                <img src="..." class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <ul>
-                                    <li>Task:</li>
-                                    <li> Date:</li>
-                                    <li> Description:</li>
-                                    <li> Assign-to:</li>
-                                  <button type="submit" class="btn btn-primary">Delete</button>
-                                </ul>
-                              </div></li>
-   
-                              <ul class="list-group">
-                                <li class="list-group-item"><div class="card" style="width: 18rem;">
-                                    <img src="..." class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <ul>
-                                        <li>Task:</li>
-                                        <li> Date:</li>
-                                        <li> Description:</li>
-                                        <li> Assign-to:</li>
-                                      <button type="submit" class="btn btn-primary">Delete</button>
-                                    </ul>
-                                  </div></li>
 
-            
-
-            </div>
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
