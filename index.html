@@ -12,20 +12,24 @@
 
 
     <!-- FORM AREA -->
+	<form action="">
         <div class="px-4">
             <h1 class="mb-5">TASK LIST</h1>
             <h5 class="mb-4">Add New Task</h5>
+			<div class="alert alert-danger hide" role="alert" id="submitAlert">
+				Please fill in all fields
+			  </div>
             <div class="row" id="user-input">
                 <div class="col-8">
                     <div class="mb-3">
                         <label for="new-task" class="form-label">Task Name</label>
-                        <input type="text" class="form-control" id="new-task" aria-describedby="taskName" placeholder="Work">
+                        <input type="text" class="form-control" id="taskName" aria-describedby="taskName" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="due-date" class="form-label">Due Date</label>
-                        <input type="date" class="form-control" id="due-date" aria-describedby="dueDate" placeholder="9/18/2022">
+                        <input type="date" class="form-control" id="dueDate" aria-describedby="dueDate" placeholder="9/18/2022" required>
                     </div>
                 </div>
             </div>
@@ -33,20 +37,29 @@
             <div class="row">
                 <div class="mb-3">
                     <label for="task-description" class="form-label">Task Description</label>
-                    <input type="textarea" class="form-control" id="task-description" aria-describedby="taskDescription" style="width: 100%; height: 200px;" placeholder="We're goimg to the movies">
+                    <textarea class="form-control" id="taskDescription" aria-describedby="taskDescription" style="width: 100%; height: 100px;" placeholder="...write a description of the task..." maxlength="246" required></textarea>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row align-items-center">
                  <label for="assign-to" class="form-label">Assigned To</label>
-                <div class="col">
-                    <input type="text" class="form-control" id="assign-to" aria-describedby="assignTo" placeholder="John Corbin Mannix Wenbo Zinash">
+                <div class="col" id="assigneeColumn">
+					<select class="form-select my-3" aria-label="Default select example" id="assignee" required>
+                        <option selected>--Assign to an individual--</option>
+                        <option value="1">Corbin</option>
+                        <option value="2">John</option>
+                        <option value="3">Megan</option>
+                        <option value="3">Wenbo</option>
+                        <option value="3">Zinash</option>
+                    </select>
                 </div>
                 <div class="col">
-                     <input type="submit" class="btn btn-primary">
+                     <input type="submit" class="btn btn-primary align-middle" id="submit">
                 </div>
             </div>
         </div>
+	</form>
+
 
         <!-- TASK CARDS -->
             <section>
@@ -125,5 +138,6 @@
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="js/index.js"></script>
 </body>
 </html>
