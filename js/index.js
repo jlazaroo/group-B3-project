@@ -11,7 +11,7 @@ submit.onclick = submitClick;
 // Function is triggered by the submit button mouse click
 function submitClick(event) {
     // this prevents the page reloading because of the form submission
-    
+
     // checks if any field is not filled or checked and toggles the 'hide' class for the alert
     if(assignee.selectedIndex < 1 || taskName.value == '' || dueDate.value == '' || taskDescription.value == ''){
         // only toggles if the 'hide' class is there
@@ -33,3 +33,4 @@ taskArray.addTask('Task 2', 'Description of task 2', 'Megan', '2022-11-12');
 taskArray.addTask('Task 3', 'Description of task 3', 'Corbin', '2022-11-14');
 taskArray.addTask('Task 4', 'Description of task 4', 'Zinash', '2022-11-13');
 taskArray.addTask('Task 5', 'Description of task 5', 'Wenbo', '2022-11-15');
+
