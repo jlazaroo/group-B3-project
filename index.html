@@ -12,49 +12,53 @@
 
 
     <!-- FORM AREA -->
-	<form action="">
+	<form class="container-fluid mx-0 p-0"  action="">
         <div class="px-4">
-            <h1 class="mb-5">TASK LIST</h1>
-            <h5 class="mb-4">Add New Task</h5>
-			<div class="alert alert-danger hide" role="alert" id="submitAlert">
+            <h1 class="my-5">TASK LIST</h1>
+            <h5 class="mb-3">Add New Task</h5>
+			<div class="mb-2 alert alert-danger hide" role="alert" id="submitAlert">
 				Please fill in all fields
 			  </div>
             <div class="row" id="user-input">
-                <div class="col-8">
+                <div class="col-12 col-sm-8 col-xs-12">
                     <div class="mb-3">
-                        <label for="new-task" class="form-label">Task Name</label>
+                        <label for="taskName" class="form-label">Task Name</label>
                         <input type="text" class="form-control" id="taskName" aria-describedby="taskName" required>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col col-sm-4">
                     <div class="mb-3">
-                        <label for="due-date" class="form-label">Due Date</label>
-                        <input type="date" class="form-control" id="dueDate" aria-describedby="dueDate" placeholder="9/18/2022" required>
+                        <label for="dueDate" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="dueDate" aria-describedby="dueDate" required>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="mb-3">
-                    <label for="task-description" class="form-label">Task Description</label>
-                    <textarea class="form-control" id="taskDescription" aria-describedby="taskDescription" style="width: 100%; height: 100px;" placeholder="...write a description of the task..." maxlength="246" required></textarea>
+                <div class="col-12 mb-3">
+                    <div class="row">
+                        <label for="taskDescription" class="form-label col-auto">Task Description</label>
+                        <p class="col-auto">Max 246</p>
+                        <p id="descriptionCount" class="col-auto">0</p>
+                    </div>
+                    <textarea class="form-control" id="taskDescription" maxlength="246" aria-describedby="taskDescription" style="width: 100%; height: 100px;" placeholder="...write a description of the task..." maxlength="246" required></textarea>
                 </div>
             </div>
 
             <div class="row align-items-center">
-                 <label for="assign-to" class="form-label">Assigned To</label>
+                 <label for="assignee" class="form-label">Assigned To</label>
                 <div class="col" id="assigneeColumn">
 					<select class="form-select my-3" aria-label="Default select example" id="assignee" required>
-                        <option selected>--Assign to an individual--</option>
+                        <option value="" disabled selected>--Assign to an individual--</option>
                         <option value="1">Corbin</option>
                         <option value="2">John</option>
                         <option value="3">Megan</option>
-                        <option value="3">Wenbo</option>
-                        <option value="3">Zinash</option>
+                        <option value="4">Wenbo</option>
+                        <option value="5">Zinash</option>
                     </select>
                 </div>
-                <div class="col">
-                     <input type="submit" class="btn btn-primary align-middle" id="submit">
+                <div class="col-auto">
+                     <input type="submit" class="btn rounded-pill btn-primary align-middle" id="submit" value="Add Task">
                 </div>
             </div>
         </div>
@@ -62,12 +66,12 @@
 
 
         <!-- TASK CARDS -->
-            <section>
+            <section class="container-fluid p-0">
                 <h2 class="mx-4 mt-5">
                     Tasks
                 </h2>
 
-                <ul class="container-fluid" id="task-list"></ul>
+                <ul class="row justify-content-center mx-2 p-0" id="taskList"></ul>
 
             </section>
 

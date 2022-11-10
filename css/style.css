@@ -9,6 +9,10 @@ li {
 #submitAlert {
     margin: 0;
     padding: 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
     opacity: 1;
     transition: all 1s !important;
 }
@@ -19,4 +23,28 @@ li {
     height: 0 !important;
     opacity: 0 !important;
     transition: all 1s !important;
+}
+
+.card {
+    height: 22rem;
+    border-radius: 15px 0 15px 15px !important;
+}
+
+.card-header {
+    border-radius: 15px 0 0 0 !important;
+}
+
+.card-description {
+    height: 150px;
+}
+
+.status-row {
+    --bs-gutter-x: 0 !important;
+}
+
+.status {
+    margin: 0;
+    border-radius: 20px 20px 0 0 !important;
+    height: 30px;
+    padding: 3px !important;
 }
