@@ -1,9 +1,14 @@
+body {
+    max-width: 1400px;
+    margin: 0 auto !important;
+}
+
 li {
     border: none !important;
 }
 
-#assigneeColumn {
-
+.list-group-item {
+    padding: 20px !important;
 }
 
 #submitAlert {
@@ -27,6 +32,7 @@ li {
 
 .card {
     height: 22rem;
+    /* max-width: 400px; */
     border-radius: 15px 0 15px 15px !important;
 }
 
@@ -36,15 +42,35 @@ li {
 
 .card-description {
     height: 150px;
+    overflow: auto;
 }
 
 .status-row {
+    /* max-width: 400px; */
     --bs-gutter-x: 0 !important;
 }
 
 .status {
+    cursor: pointer;
+    font-weight: bold !important;
     margin: 0;
     border-radius: 20px 20px 0 0 !important;
     height: 30px;
     padding: 3px !important;
+    transition: all 1s !important;
+}
+
+.btn-primary {
+    width: 130px !important;
+    transition: all 1s !important;
+}
+
+.btn-success {
+    width: 80px !important;
+    transition: all 1s !important;
+}
+
+.btn-danger {
+    width: 90px !important;
+    transition: all 1s !important;
 }

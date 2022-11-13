@@ -61,7 +61,8 @@ function submitClick(event) {
 
 
 // adds new tasks for test purposes
-taskArray.addTask('Task 1', 'Description of task 1', 'John', '2022-11-10');
+taskArray.addTask('Task 1', `For this task, we'll write the code to update a task's status to "DONE" once a "Mark As Done" button on the task is clicked.
+Note, for this task, we are not using the "Update Task" form. This is part of the re-structuring of the project. This ste`, 'John', '2022-11-10');
 taskArray.addTask('Task 2', 'Description of task 2', 'Megan', '2022-11-12');
 taskArray.addTask('Task 3', 'Description of task 3', 'Corbin', '2022-11-14');
 taskArray.addTask('Task 4', 'Description of task 4', 'Zinash', '2022-11-13');
@@ -70,10 +71,33 @@ taskArray.render();
 
 
 taskList.addEventListener('click', (event) => { // "event" here is the event parameter
+    let status = document.querySelectorAll('.status');
+
     if(event.target.classList.contains('doneButton')){
-        // console.log(event.target.parentElement.parentElement.parentElement);
-        console.log(event.target)
+
+        let id = event.target.parentElement.parentElement.parentElement.parentElement.id;
+        
+        if(taskArray.tasks[id].status === 'To Do'){
+            taskArray.tasks[id].status = 'In Progress';
+            taskArray.tasks[id].statusClass = ('btn-primary');
+            status[id].classList.remove('btn-danger');
+            status[id].classList.add('btn-primary');
+            status[id].innerHTML = 'In Progress';
+            
+        }else if(taskArray.tasks[id].status === 'In Progress'){
+                taskArray.tasks[id].status = 'Done';
+                taskArray.tasks[id].statusClass = ('btn-success');
+                status[id].classList.remove('btn-primary');
+                status[id].classList.add('btn-success');
+                status[id].innerHTML = 'Done';
+        }else{
+            taskArray.tasks[id].status = 'To Do';
+            taskArray.tasks[id].statusClass = ('btn-danger');
+            status[id].classList.remove('btn-success');
+            status[id].classList.add('btn-danger');
+            status[id].innerHTML = 'To Do';
+        }
     }
-    
+
 });
 
