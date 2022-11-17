@@ -7,6 +7,12 @@ const submit = document.querySelector('#submit');
 const submitAlert = document.querySelector('#submitAlert');
 const taskList = document.querySelector('#taskList');
 
+// creates new task array
+const taskArray = new TaskManager();
+
+// loads from local storage
+taskArray.load();
+
 // Keeps track of characters typed and displays the current amount
 let taskDescriptionCount = 0;
 taskDescription.addEventListener("input", function(){
@@ -26,8 +32,7 @@ if(day < 10 ){
 // Sets a 'minimum' date so an earlier date (than today) cannot be picked
 dueDate.setAttribute('min', `${year}-${month}-${day}`);
 
-// creates new task array
-const taskArray = new TaskManager();
+
 
 // Assigns the mouse click on the submit button to the submitClick Function
 submit.onclick = submitClick;
@@ -37,19 +42,20 @@ function submitClick(event) {
     if(assignee.selectedIndex < 1 || taskName.value == '' || dueDate.value == '' || taskDescription.value == ''){
         // event.preventDefault();
         // only toggles if the 'hide' class is there
-        if(submitAlert.classList.contains('hide')){
-            submitAlert.classList.toggle('hide');
+        if(submitAlert.classList.contains('validationHide')){
+            submitAlert.classList.toggle('validationHide');
         }
     //only toggles if the 'hide' class is not there
     } else {
         event.preventDefault();
         // only toggles if the 'hide' class is NOT there
-        if(submitAlert.classList.contains('hide') == false){
-            submitAlert.classList.toggle('hide');
+        if(submitAlert.classList.contains('validationHide') == false){
+            submitAlert.classList.toggle('validationHide');
         }
         // Calls addTask() and uses values from the form
         taskArray.addTask(taskName.value, taskDescription.value, assignee.options[assignee.selectedIndex].text, dueDate.value);
         taskArray.render();
+        taskArray.save();
         // Initializes all inputs in form
         assignee.selectedIndex = 0;
         taskName.value = '';
@@ -61,19 +67,21 @@ function submitClick(event) {
 
 
 // adds new tasks for test purposes
-taskArray.addTask('Task 1', `For this task, we'll write the code to update a task's status to "DONE" once a "Mark As Done" button on the task is clicked.
-Note, for this task, we are not using the "Update Task" form. This is part of the re-structuring of the project. This ste`, 'John', '2022-11-10');
-taskArray.addTask('Task 2', 'Description of task 2', 'Megan', '2022-11-12');
-taskArray.addTask('Task 3', 'Description of task 3', 'Corbin', '2022-11-14');
-taskArray.addTask('Task 4', 'Description of task 4', 'Zinash', '2022-11-13');
-taskArray.addTask('Task 5', 'Description of task 5', 'Wenbo', '2022-11-15');
-taskArray.render();
+// taskArray.addTask('Task 1', `For this task, we'll write the code to update a task's status to "DONE" once a "Mark As Done" button on the task is clicked.
+// Note, for this task, we are not using the "Update Task" form. This is part of the re-structuring of the project. This ste`, 'John', '2022-11-10');
+// taskArray.addTask('Task 2', 'Description of task 2', 'Megan', '2022-11-12');
+// taskArray.addTask('Task 3', 'Description of task 3', 'Corbin', '2022-11-14');
+// taskArray.addTask('Task 4', 'Description of task 4', 'Zinash', '2022-11-13');
+// taskArray.addTask('Task 5', 'Description of task 5', 'Wenbo', '2022-11-15');
+// taskArray.render();
 
-
-taskList.addEventListener('click', (event) => { // "event" here is the event parameter
+// listens for click on the ul which is used to listen for the status and delete buttons
+taskList.addEventListener('click', (event) => {
     let status = document.querySelectorAll('.status');
+    let statusButton = document.querySelectorAll('.statusButton');
 
-    if(event.target.classList.contains('doneButton')){
+    // checks if the statusButton is clicked then cycles through statuses
+    if(event.target.classList.contains('statusButton')){
 
         let id = event.target.parentElement.parentElement.parentElement.parentElement.id;
         
@@ -83,6 +91,9 @@ taskList.addEventListener('click', (event) => { // "event" here is the event par
             status[id].classList.remove('btn-danger');
             status[id].classList.add('btn-primary');
             status[id].innerHTML = 'In Progress';
+            statusButton[id].classList.remove('btn-danger');
+            statusButton[id].classList.add('btn-primary');
+            taskArray.save();
             
         }else if(taskArray.tasks[id].status === 'In Progress'){
                 taskArray.tasks[id].status = 'Done';
@@ -90,14 +101,23 @@ taskList.addEventListener('click', (event) => { // "event" here is the event par
                 status[id].classList.remove('btn-primary');
                 status[id].classList.add('btn-success');
                 status[id].innerHTML = 'Done';
+                statusButton[id].classList.remove('btn-primary');
+                statusButton[id].classList.add('btn-success');
+                taskArray.save();
         }else{
             taskArray.tasks[id].status = 'To Do';
             taskArray.tasks[id].statusClass = ('btn-danger');
             status[id].classList.remove('btn-success');
             status[id].classList.add('btn-danger');
             status[id].innerHTML = 'To Do';
+            statusButton[id].classList.remove('btn-success');
+            statusButton[id].classList.add('btn-danger');
+            taskArray.save();
         }
     }
-
 });
 
+const clearButton = document.getElementById('clearButton');
+clearButton.onclick = function() {
+    clear();
+}
