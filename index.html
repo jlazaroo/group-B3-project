@@ -16,20 +16,20 @@
         <div class="px-4">
             <h1 class="my-5">TASK LIST</h1>
             <h5 class="mb-3">Add New Task</h5>
-			<div class="mb-2 alert alert-danger hide" role="alert" id="submitAlert">
+			<div class="mb-2 alert alert-danger validationHide" role="alert" id="submitAlert">
 				Please fill in all fields
 			  </div>
             <div class="row" id="user-input">
-                <div class="col-12 col-sm-8 col-xs-12">
+                <div class="col-12 col-sm-8 col-xs-12" id="taskNameColumn">
                     <div class="mb-3">
                         <label for="taskName" class="form-label">Task Name</label>
-                        <input type="text" class="form-control" id="taskName" aria-describedby="taskName" required>
+                        <input type="text" class="form-control bg-light" id="taskName" aria-describedby="taskName" required>
                     </div>
                 </div>
-                <div class="col col-sm-4">
+                <div class="col col-sm-4" id="dueDateColumn">
                     <div class="mb-3">
                         <label for="dueDate" class="form-label">Due Date</label>
-                        <input type="date" class="form-control" id="dueDate" aria-describedby="dueDate" required>
+                        <input type="date" class="form-control bg-light" id="dueDate" aria-describedby="dueDate" required>
                     </div>
                 </div>
             </div>
@@ -41,15 +41,17 @@
                         <p class="col-auto">Max 246</p>
                         <p id="descriptionCount" class="col-auto">0</p>
                     </div>
-                    <textarea class="form-control" id="taskDescription" maxlength="246" aria-describedby="taskDescription" style="width: 100%; height: 100px;" placeholder="...write a description of the task..." maxlength="246" required></textarea>
+                    <textarea class="form-control bg-light" id="taskDescription" maxlength="246" aria-describedby="taskDescription" style="width: 100%; height: 100px;" placeholder="...write a description of the task..." maxlength="246" required></textarea>
                 </div>
             </div>
 
             <div class="row align-items-center">
-                 <label for="assignee" class="form-label">Assigned To</label>
+                <label for="assignee" class="form-label">Assigned To</label>
+                <div class="col-auto bg-light" id="assigneeLeftSpace"> </div>
                 <div class="col" id="assigneeColumn">
-					<select class="form-select my-3" aria-label="Default select example" id="assignee" required>
-                        <option value="" disabled selected>--Choose to an individual--</option>
+					<select class="form-select my-3 bg-light" aria-label="Default select example" id="assignee" required>
+                    
+                        <option value="" disabled selected>--Choose an individual--</option>
                         <option value="1">Corbin</option>
                         <option value="2">John</option>
                         <option value="3">Megan</option>
@@ -57,8 +59,8 @@
                         <option value="5">Zinash</option>
                     </select>
                 </div>
-                <div class="col-auto">
-                     <input type="submit" class="btn rounded-pill btn-primary align-middle" id="submit" value="Add Task">
+                <div class="col-3" id="submitColumn">
+                     <input type="submit" class="btn btn-secondary align-middle" id="submit" value="Add Task">
                 </div>
             </div>
         </div>
@@ -75,7 +77,7 @@
 
             </section>
 
-    
+    <a class="btn btn-danger mx-4 my-5" id="clearButton">CLEAR TASKS</a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src="js/taskManager.js"></script>

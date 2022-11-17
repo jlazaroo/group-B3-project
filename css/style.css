@@ -1,3 +1,5 @@
+
+
 body {
     max-width: 1400px;
     margin: 0 auto !important;
@@ -22,7 +24,7 @@ li {
     transition: all 1s !important;
 }
 
-.hide {
+.validationHide {
     visibility: hidden;
     padding: 0 !important;
     height: 0 !important;
@@ -30,7 +32,10 @@ li {
     transition: all 1s !important;
 }
 
+
+
 .card {
+    position: relative;
     height: 22rem;
     /* max-width: 400px; */
     border-radius: 15px 0 15px 15px !important;
@@ -41,7 +46,7 @@ li {
 }
 
 .card-description {
-    height: 150px;
+    height: 140px;
     overflow: auto;
 }
 
@@ -60,17 +65,102 @@ li {
     transition: all 1s !important;
 }
 
-.btn-primary {
+.status.btn-primary {
     width: 130px !important;
     transition: all 1s !important;
 }
 
-.btn-success {
+.status.btn-success {
     width: 80px !important;
     transition: all 1s !important;
 }
 
-.btn-danger {
+.status.btn-danger {
     width: 90px !important;
     transition: all 1s !important;
+}
+
+.statusButton {
+    height: 40px;
+    transition: all 1s !important;
+}
+
+.deleteButton {
+    height: 40px;
+    transition: all 1s !important;
+}
+
+.buttonRow {
+    /* border: 1px solid blue; */
+}
+
+.form-select:focus, .form-control:focus, #submit {
+    border: 1px solid #ced4da !important;
+    box-shadow: 0 0 0 0  !important;
+}
+
+#taskName, #dueDate {
+    height: 50px;
+    border-radius: 200px;
+}
+
+#taskDescription {
+    border-radius: 15px;
+}
+
+#assigneeColumn {
+    margin-right: 0 !important;
+    padding-right: 0;
+    padding-left: 0 !important;
+}
+
+#assignee {
+    margin: 0 !important;
+    padding-left: 40px !important;
+    height: 50px;
+    border-radius: 0 !important;
+    border-left: none !important;
+}
+
+#assigneeLeftSpace {
+    height: 50px;
+    border-radius: 200px 0 0 200px !important;
+    border: 1px solid #ced4da;
+    border-right: none;
+    margin-left: 12px;
+}
+
+#submitColumn {
+    padding-left: 0;
+    border-radius: 0 200px 200px 0;
+    /* box-shadow: 0 0 0 .25rem rgba(13,110,253,.25) !important; */
+}
+
+#submit {
+    border: none !important;
+    width: 100% !important;
+    height: 50px;
+    border-radius: 0 200px 200px 0;
+}
+
+@media screen and (min-width: 577px) {
+    #taskNameColumn {
+        margin-right: 0 !important;
+        padding-right: 0;
+    }
+    #dueDateColumn {
+        padding-left: 0;
+        border-radius: 0 200px 200px 0;
+        /* box-shadow: 0 0 0 .25rem rgba(13,110,253,.25) !important; */
+    }
+    #taskName {
+        margin: 0 !important;
+        height: 50px;
+        border-radius: 200px 0 0 200px !important;
+    }
+    #dueDate {
+        width: 100% !important;
+        height: 50px;
+        border-radius: 0 200px 200px 0;
+    }
 }

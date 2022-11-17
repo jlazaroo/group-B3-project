@@ -1,5 +1,5 @@
-console.log('Group Project Task 5')
 
+// Creates html to be inserted into the webpage ul
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status, statusClass) => {
     const html = ` 
         <li class="list-group-item col-md-6 col-lg-5 col-xxl-4" id="${id}">
@@ -15,10 +15,10 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status, stat
                         <p class="card-text">Assigned to: ${assignedTo}</p>
                         <p class="card-text card-description">${description}</p>
                     </div>
-                    <div class="row px-3">
-                        <a class="col-auto btn btn-success rounded-pill doneButton">Status</a> 
+                    <div class="row p-3 buttonRow">
+                        <a class="col-auto btn ${statusClass} rounded-pill statusButton">Status</a> 
                         <div class="col"></div>
-                        <a class="col-auto btn btn-danger rounded-pill">Delete</a>
+                        <a class="col-auto btn btn-danger rounded-pill deleteButton">Delete</a>
                     </div>
                 </div>
             </div>
@@ -26,11 +26,14 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status, stat
     `
     return html
 }
+
+// Class that creates and updates an array of tasks and uses createTaskHtml to insert lists into the ul
 class TaskManager {
     constructor(currentId = 0) {
         this.currentId = currentId;
         this.tasks = [];
     }
+    // method that adds new tasks in the this.tasks array
     addTask(name, description, assignedTo, dueDate) {
         
         const task = {
@@ -45,6 +48,7 @@ class TaskManager {
         this.tasks.push(task);
         this.currentId++;
     }
+    // method that inserts html lists in the ul
     render(){
         const tasksHtmlList = []
         this.tasks.forEach(task => {
@@ -56,7 +60,32 @@ class TaskManager {
         const tasksHtml = tasksHtmlList.join('\n')
         const taskList = document.querySelector("#taskList")
         taskList.innerHTML = tasksHtml
-        // console.log(taskList)
-        // console.log(tasksHtml)
+    }
+    // saves this.tasks and currentId into local storage
+    save(){
+        let arrayString = JSON.stringify(this.tasks);
+        localStorage.setItem('arrayString', arrayString);
+
+        let idString = JSON.stringify(this.currentId);
+        localStorage.setItem('id', idString);
+    }
+    // parses then loads local storage IF storage is not empty
+    load(){
+        if(localStorage.length > 0){
+            let arrayParse = localStorage.getItem('arrayString');
+            arrayParse = JSON.parse(arrayParse);
+            this.tasks = arrayParse;
+
+            let idParse = localStorage.getItem('id');
+            idParse = JSON.parse(idParse);
+            this.currentId = idParse;
+
+            this.render();
+        }
+    }
+    // clears local storage for testing purposes
+    clear(){
+        localStorage.clear();
+        location.reload();
     }
 }
