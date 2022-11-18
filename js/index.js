@@ -83,8 +83,9 @@ taskList.addEventListener('click', (event) => {
     // checks if the statusButton is clicked then cycles through statuses
     if(event.target.classList.contains('statusButton')){
 
-        let id = event.target.parentElement.parentElement.parentElement.parentElement.id;
+        let id = Number(event.target.parentElement.parentElement.parentElement.parentElement.id);
         
+        // Changes the status of card
         if(taskArray.tasks[id].status === 'To Do'){
             taskArray.tasks[id].status = 'In Progress';
             taskArray.tasks[id].statusClass = ('btn-primary');
@@ -115,9 +116,18 @@ taskList.addEventListener('click', (event) => {
             taskArray.save();
         }
     }
-});
+    // Checks if a delete button was clicked and calls the deleteTask to delete the task
+    if(event.target.classList.contains('deleteButton')) {
+        let id = Number(event.target.parentElement.parentElement.parentElement.parentElement.id);
+        console.log(id);
+        taskArray.deleteTask(id);
+        taskArray.save();
+        taskArray.render();
+    }
 
+});
+// Clears local storage for test purposes
 const clearButton = document.getElementById('clearButton');
 clearButton.onclick = function() {
-    clear();
+    taskArray.clear();
 }
