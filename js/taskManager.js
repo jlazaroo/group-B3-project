@@ -29,15 +29,13 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status, stat
 
 // Class that creates and updates an array of tasks and uses createTaskHtml to insert lists into the ul
 class TaskManager {
-    constructor(currentId = 0) {
-        this.currentId = currentId;
+    constructor() {
         this.tasks = [];
     }
     // method that adds new tasks in the this.tasks array
     addTask(name, description, assignedTo, dueDate) {
-        
         const task = {
-            id: this.currentId,
+            id: this.tasks.length,
             name: name,
             description: description,
             assignedTo: assignedTo,
@@ -46,7 +44,6 @@ class TaskManager {
             statusClass: 'btn-danger'
         }
         this.tasks.push(task);
-        this.currentId++;
     }
     // method that inserts html lists in the ul
     render(){
@@ -61,13 +58,23 @@ class TaskManager {
         const taskList = document.querySelector("#taskList")
         taskList.innerHTML = tasksHtml
     }
-    // saves this.tasks and currentId into local storage
+    deleteTask(taskId){
+        let newTasks = []
+        this.tasks.forEach(task => {
+            if(task.id !== taskId) {
+                newTasks.push(task) 
+            }
+        })
+        for(let i=0; i< newTasks.length; i++){
+            newTasks[i].id = i;
+            console.log(newTasks[i]);
+        }
+        this.tasks = newTasks;
+    }
+    // saves this.tasks into local storage
     save(){
         let arrayString = JSON.stringify(this.tasks);
         localStorage.setItem('arrayString', arrayString);
-
-        let idString = JSON.stringify(this.currentId);
-        localStorage.setItem('id', idString);
     }
     // parses then loads local storage IF storage is not empty
     load(){
@@ -75,10 +82,6 @@ class TaskManager {
             let arrayParse = localStorage.getItem('arrayString');
             arrayParse = JSON.parse(arrayParse);
             this.tasks = arrayParse;
-
-            let idParse = localStorage.getItem('id');
-            idParse = JSON.parse(idParse);
-            this.currentId = idParse;
 
             this.render();
         }
