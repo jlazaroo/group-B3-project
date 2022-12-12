@@ -22,4 +22,4 @@ In each task you will be assessed by the instructors on the “Assessment Criter
 https://user-images.githubusercontent.com/36890724/190521773-b3399bdb-1103-4035-bb2c-fcd2eb65c632.mp4
 
 **Screenshot**
-Screen Shot 2022-12-12 at 2.58.47 PM.png
+screenshot.png
