@@ -16,7 +16,7 @@
 
 **Contributors**
 
-* Corbin, John, Megan, Wen Bo, Zinash
+* Corbin, John, Megan, Wenbo, Zinash
 
 **Contact**
 * jlazaroo@gmail.com
