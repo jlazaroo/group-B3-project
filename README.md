@@ -2,24 +2,28 @@
 # Junior Web Developer - Final Project - Task Planner Web App
 
 
-**General Objectives**
+**Description**
 
-* Create a Task Planner web app from scratch.
-* Demonstrate the technical and non-technical skills developed during the Junior Web Developer program. 
+* A task manager that allows you to create and track dated tasks.
 
+**Technologies**
 
-**Details**
+* HTML, CSS, Javascript
 
-* You will work in **groups of 3-4 people** as assigned by the instructor. 
-* This project has **10 tasks** (~3 hours each) divided into **3 Sprints**.
-* Each Sprint will have an **opening** and a **retrospective** at the end following the Scrum methodology.
-* At the end of the project, you and your group will do a **final project presentation** to the entire class (as time allows).
+**Installation**
 
+* Go to the https://github.com/jlazaroo/group-B3-project/ and clone the repository.
 
-**Assessment**
-In each task you will be assessed by the instructors on the “Assessment Criteria” in this rubric: https://docs.google.com/spreadsheets/d/1pKK9KCnpraEcL7FQjxeMVeDWfjbypYRcSrXCyAVPtHo/edit?usp=sharing
+**Contributors**
 
-https://user-images.githubusercontent.com/36890724/190521773-b3399bdb-1103-4035-bb2c-fcd2eb65c632.mp4
+* Corbin, John, Megan, Wen Bo, Zinash
+
+**Contact**
+* jlazaroo@gmail.com
+
+**License**
+
+* This project is licensed under the MIT license
 
 **Screenshot**
 <img src="https://github.com/jlazaroo/group-B3-project/blob/a0f419ef2389c950b2dbdf268145c1a19955ed93/screenshot.png"></img>
