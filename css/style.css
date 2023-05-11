@@ -9,8 +9,49 @@ li {
     border: none !important;
 }
 
+button {
+    /* border-radius: 200px !important; */
+    font-weight: bold !important;
+}
+
 .list-group-item {
     padding: 20px !important;
+}
+
+#alertOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.415);
+    opacity: 1;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+
+#alertBox {
+    background-color: rgb(138, 0, 0);
+    height: 140px;
+    width: 400px;
+    border-radius: 4px;
+    /* opacity: 1; */
+    /* transition: all .2s; */
+}
+
+#alertBoxTop{
+    background-color: rgb(123, 17, 17);
+    border-radius: 4px 4px 0 0;
+    height: 18px;
+}
+
+#alertBoxText {
+    color: white;
+    /* font-weight: bold; */
+    font-size: 20px;
+    height: 30%;
 }
 
 #submitAlert {
@@ -46,7 +87,7 @@ li {
 }
 
 .card-description {
-    height: 140px;
+    height: 150px;
     overflow: auto;
 }
 
@@ -90,8 +131,39 @@ li {
     transition: all 1s !important;
 }
 
+.green {
+    color: #198754;
+    transition: all 1s;
+}
+
+.red {
+    color: #dc3545;
+    transition: all 1s;
+}
+
+.blue {
+    color: #0d6efd;
+    transition: all 1s;
+}
+
+.blur {
+    filter: blur(4px);
+    transition: all 1s;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1s;
+}
+
+/* .fa-trash {
+    height: 40px;
+} */
+
 .buttonRow {
     /* border: 1px solid blue; */
+    height: 45px;
 }
 
 .form-select:focus, .form-control:focus, #submit {
