@@ -79,55 +79,103 @@ function submitClick(event) {
 taskList.addEventListener('click', (event) => {
     let status = document.querySelectorAll('.status');
     let statusButton = document.querySelectorAll('.statusButton');
+    let statusIcon = document.querySelectorAll('.fa-bars-progress');
 
     // checks if the statusButton is clicked then cycles through statuses
-    if(event.target.classList.contains('statusButton')){
+    if(event.target.classList.contains('fa-bars-progress')){
 
-        let id = Number(event.target.parentElement.parentElement.parentElement.parentElement.id);
+        let id = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
         
         // Changes the status of card
         if(taskArray.tasks[id].status === 'To Do'){
             taskArray.tasks[id].status = 'In Progress';
             taskArray.tasks[id].statusClass = ('btn-primary');
+            taskArray.tasks[id].statusIconClass = ('blue');
             status[id].classList.remove('btn-danger');
             status[id].classList.add('btn-primary');
             status[id].innerHTML = 'In Progress';
-            statusButton[id].classList.remove('btn-danger');
-            statusButton[id].classList.add('btn-primary');
+            statusIcon[id].classList.remove('red');
+            statusIcon[id].classList.add('blue');
+            // statusButton[id].classList.remove('btn-danger');
+            // statusButton[id].classList.add('btn-primary');
             taskArray.save();
             
         }else if(taskArray.tasks[id].status === 'In Progress'){
                 taskArray.tasks[id].status = 'Done';
                 taskArray.tasks[id].statusClass = ('btn-success');
+                taskArray.tasks[id].statusIconClass = ('green');
                 status[id].classList.remove('btn-primary');
                 status[id].classList.add('btn-success');
                 status[id].innerHTML = 'Done';
-                statusButton[id].classList.remove('btn-primary');
-                statusButton[id].classList.add('btn-success');
+                statusIcon[id].classList.remove('blue');
+                statusIcon[id].classList.add('green');
+                // statusButton[id].classList.remove('btn-primary');
+                // statusButton[id].classList.add('btn-success');
                 taskArray.save();
         }else{
             taskArray.tasks[id].status = 'To Do';
             taskArray.tasks[id].statusClass = ('btn-danger');
+            taskArray.tasks[id].statusIconClass = ('red');
             status[id].classList.remove('btn-success');
             status[id].classList.add('btn-danger');
             status[id].innerHTML = 'To Do';
-            statusButton[id].classList.remove('btn-success');
-            statusButton[id].classList.add('btn-danger');
+            statusIcon[id].classList.remove('green');
+            statusIcon[id].classList.add('red');
+            // statusButton[id].classList.remove('btn-success');
+            // statusButton[id].classList.add('btn-danger');
             taskArray.save();
         }
     }
     // Checks if a delete button was clicked and calls the deleteTask to delete the task
-    if(event.target.classList.contains('deleteButton')) {
-        let id = Number(event.target.parentElement.parentElement.parentElement.parentElement.id);
-        console.log(id);
+    if(event.target.classList.contains('fa-recycle')) {
+        let id = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+        console.log(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
         taskArray.deleteTask(id);
         taskArray.save();
         taskArray.render();
     }
 
 });
-// Clears local storage for test purposes
+
+taskList.onmouseover = function(event) {
+    
+    let recycleIcon = document.querySelectorAll('.fa-recycle');
+    if(event.target.classList.contains('fa-recycle')){
+        console.log(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+        let id = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+        recycleIcon[id].classList.add('fa-bounce');
+        console.log(recycleIcon[id].classList);
+        recycleIcon[id].onmouseleave = function(event) {
+            recycleIcon[id].classList.remove('fa-bounce');
+        }
+    }
+}
+
+// Clears local storage and tasks
 const clearButton = document.getElementById('clearButton');
+const deleteButton = document.getElementById('deleteButton');
+const cancelButton = document.getElementById('cancelButton');
+const alertOverlay = document.getElementById('alertOverlay');
+const alertBox = document.getElementById('alertBox');
 clearButton.onclick = function() {
+    alertOverlay.classList.remove('hide');
+    // alertBox.classList.remove('hide');
+    document.forms[0].classList.add('blur');
+    document.body.children[1].classList.add('blur');
+    // if(confirm('Are you sure you want to CLEAR ALL tasks?')) {
+    //     taskArray.clear();
+    // }
+}
+cancelButton.onclick = function() {
+    alertOverlay.classList.add('hide');
+    // alertBox.classList.add('hide');
+    document.forms[0].classList.remove('blur');
+    document.body.children[1].classList.remove('blur');
+}
+deleteButton.onclick = function() {
+    alertOverlay.classList.add('hide');
+    // alertBox.classList.add('hide');
+    document.forms[0].classList.remove('blur');
+    document.body.children[1].classList.remove('blur');
     taskArray.clear();
 }

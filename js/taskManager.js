@@ -1,6 +1,6 @@
 
 // Creates html to be inserted into the webpage ul
-const createTaskHtml = (id, name, description, assignedTo, dueDate, status, statusClass) => {
+const createTaskHtml = (id, name, description, assignedTo, dueDate, status, statusClass, statusIconClass) => {
     const html = ` 
         <li class="list-group-item col-md-6 col-lg-5 col-xxl-4" id="${id}">
             <div class="row status-row">
@@ -15,10 +15,10 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status, stat
                         <p class="card-text">Assigned to: ${assignedTo}</p>
                         <p class="card-text card-description">${description}</p>
                     </div>
-                    <div class="row p-3 buttonRow">
-                        <a class="col-auto btn ${statusClass} rounded-pill statusButton">Status</a> 
+                    <div class="row px-3 buttonRow">
+                        <div class="col-auto p-0 btn statusButton" title="status"><i class="fa-solid fa-bars-progress fa-2xl ${statusIconClass}"></i></div> 
                         <div class="col"></div>
-                        <a class="col-auto btn btn-danger rounded-pill deleteButton">Delete</a>
+                        <div class="col-auto p-0 btn" title="recycle"><i class="fa-solid fa-recycle fa-2xl col-auto red"></i></div> 
                     </div>
                 </div>
             </div>
@@ -41,7 +41,8 @@ class TaskManager {
             assignedTo: assignedTo,
             dueDate: dueDate,
             status: 'To Do',
-            statusClass: 'btn-danger'
+            statusClass: 'btn-danger',
+            statusIconClass: 'red'
         }
         this.tasks.push(task);
     }
@@ -51,7 +52,7 @@ class TaskManager {
         this.tasks.forEach(task => {
             const date = new Date(task.dueDate)
             const formattedDate = date.toDateString()
-            const taskHtml = createTaskHtml(task.id, task.name, task.description, task.assignedTo, formattedDate, task.status, task.statusClass)
+            const taskHtml = createTaskHtml(task.id, task.name, task.description, task.assignedTo, formattedDate, task.status, task.statusClass, task.statusIconClass)
             tasksHtmlList.push(taskHtml)
         }) 
         const tasksHtml = tasksHtmlList.join('\n')
